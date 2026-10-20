@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Ruby",
+  "version": "1.0.0",
+  "identifier": "com.ruby.assistant",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Ruby Assistant",
+        "label": "main",
+        "width": 240,
+        "height": 42,
+        "minWidth": 120,
+        "minHeight": 32,
+        "maxWidth": 800,
+        "maxHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "shadow": false,
+        "visible": true,
+        "center": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self' 'unsafe-inline' 'unsafe-eval' asset: http: https: ws: data: blob:;"
+    },
+    "trayIcon": {
+      "id": "ruby-tray",
+      "tooltip": "Ruby AI Assistant",
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
+    "macOSPrivateApi": true
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["dmg", "pkg", "nsis", "msi"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "Productivity",
+    "shortDescription": "Ruby AI Assistant Desktop Floating Overlay",
+    "longDescription": "Desktop floating AI overlay assistant anchored to macOS Notch and Windows System Tray.",
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "12.0"
+    },
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
+    }
+  },
+  "plugins": {
+    "store": {},
+    "global-shortcut": {},
+    "dialog": {},
+    "fs": {},
+    "shell": {},
+    "process": {},
+    "updater": {
+      "endpoints": [
+        "https://github.com/fikrinurhakim/Ruby/releases/latest/download/latest.json"
+      ]
+    }
+  }
+}
