@@ -71,11 +71,6 @@
     "dialog": {},
     "fs": {},
     "shell": {},
-    "process": {},
-    "updater": {
-      "endpoints": [
-        "https://github.com/Padilu/Ruby-WIP/releases/latest/download/latest.json"
-      ]
-    }
+    "process": {}
   }
 }
