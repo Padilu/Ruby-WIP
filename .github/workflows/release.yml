@@ -48,8 +48,11 @@ jobs:
       - name: Publish Release Assets
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: 'Ruby Assistant ${{ github.ref_name }}'
+          fail_on_unmatched_files: false
           body: |
             ## Ruby AI Desktop Assistant ${{ github.ref_name }}
             Multi-platform floating overlay AI assistant for macOS Notch and Windows Taskbar.
