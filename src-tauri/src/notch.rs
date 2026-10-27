@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use tauri::{AppHandle, PhysicalPosition, PhysicalSize, WebviewWindow};
+use tauri::{PhysicalPosition, PhysicalSize, WebviewWindow};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ScreenInfo {
@@ -209,8 +209,8 @@ pub fn position_overlay(window: WebviewWindow, config: PositionConfig) -> Result
         (config.width, config.height)
     };
 
-    let mut target_x: f64;
-    let mut target_y: f64;
+    let target_x: f64;
+    let target_y: f64;
 
     match config.anchor.as_str() {
         "notch" => {
