@@ -23,28 +23,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+          node-version: 20
+          cache: 'pnpm'
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
 
-      - name: Rust cache
-        uses: swatinem/rust-cache@v2
-        with:
-          work-dir: './src-tauri'
-
       - name: Install frontend dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build Tauri Desktop Bundle
         uses: tauri-apps/tauri-action@v0
@@ -63,11 +57,6 @@ jobs:
             ### Included Installers:
             - **macOS**: `.dmg` (Drag-to-Applications) and `.pkg` (Installer package)
             - **Windows**: `.exe` (NSIS setup installer) and `.msi` (Windows Installer)
-            
-            ### Highlights:
-            - Super fluid UI with Framer Motion spring physics
-            - Native Notch and Taskbar System Tray overlay placement
-            - Low-token quota testing and manual TTS audio replay
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
