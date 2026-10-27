@@ -5,9 +5,6 @@ description = "Ruby AI Desktop Overlay Assistant for macOS Notch and Windows Sys
 authors = ["Ruby Team"]
 edition = "2021"
 
-[lib]
-name = "ruby_lib"
-crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
 tauri-build = { version = "2.0", features = [] }
