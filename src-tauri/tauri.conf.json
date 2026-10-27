@@ -74,7 +74,7 @@
     "process": {},
     "updater": {
       "endpoints": [
-        "https://github.com/fikrinurhakim/Ruby/releases/latest/download/latest.json"
+        "https://github.com/Padilu/Ruby-WIP/releases/latest/download/latest.json"
       ]
     }
   }
